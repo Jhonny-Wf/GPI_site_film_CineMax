@@ -1,0 +1,403 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header style - mai mare, cu noul nume CineMax */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(229, 9, 20, 0.5); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 26px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.header-right input[type="text"] {
+    padding: 9px 36px 9px 15px;
+    border-radius: 6px;
+    border: none;
+    background: #2a2a2b;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    width: 200px;
+}
+
+.header-right input[type="text"]::placeholder {
+    color: #888;
+}
+
+.header-right input[type="text"]:focus {
+    border-color: #e50914;
+}
+
+.header-right a {
+    color: #e50914;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.header-right a:hover {
+    text-decoration: underline;
+}
+
+/* Container general */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* Bară pentru filtre */
+.filters-container {
+    padding: 15px;
+    background: #111;
+    border-radius: 8px;
+    margin: 0 15px 15px 15px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.filters-container label {
+    color: #e50914;
+    font-weight: bold;
+    margin: 0;
+    font-size: 14px;
+}
+
+.filters-container select {
+    padding: 8px;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Grid-ul acasa */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 25px;
+    padding: 0 15px 15px 15px;
+}
+
+.film-card {
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.film-card:hover {
+    transform: scale(1.05);
+}
+
+.film-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.film-card .info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.film-card .info h2 {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.film-card .info p.gen {
+    font-size: 11px;
+    color: #aaaaaa;
+    margin: 0 0 5px 0;
+}
+
+.film-card .info p.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #222;
+    color: #eee;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    border: 1px solid #333;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+/* Pagina Detalii Film */
+.movie-details-top {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.movie-details-top img {
+    width: 240px;
+    height: 360px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.movie-info-right {
+    flex: 1;
+}
+
+.tag-gen {
+    background-color: #333;
+    color: #ffcc00;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.movie-info-right h2 {
+    margin: 5px 0 15px 0;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.movie-info-right p {
+    color: #cccccc;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Player Audio/Video Iframe Container */
+.movie-player {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+.movie-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Sectiunea Recenzii Utilizatori  */
+h3 {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 20px 0 10px 0;
+}
+
+.review-card {
+    background: #1c1c1c;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #e50914;
+}
+
+.review-card .rev-header {
+    color: #e50914;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.review-card .rev-text {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.review-card .rev-date {
+    color: #666666;
+    font-size: 11px;
+}
+
+/* Notificare neautentificat */
+.auth-notice {
+    background: #222;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.auth-notice a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* Butoane Formulare Universale */
+.btn {
+    background: #e50914;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
+}
+.btn:hover {
+    background: #b20710;
+}
+
+/* Pagini statice: Despre / Contact */
+.page-content {
+    background: #1c1c1c;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #cccccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.page-content h2 {
+    color: #e50914;
+    margin-top: 0;
+    font-size: 26px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.page-content h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: -10px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #e50914;
+    outline: none;
+}
+
+/* Footer Container */
+.site-footer {
+    background-color: #111;
+    color: #888;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+.site-footer .footer-links {
+    margin-top: 15px;
+}
+
+.site-footer .footer-links a {
+    color: #e50914;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.site-footer .footer-links a:hover {
+    text-decoration: underline;
+}
+

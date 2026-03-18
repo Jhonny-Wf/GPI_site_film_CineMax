@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Despre CineMax</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23e50914'/><text x='50%' y='50%' font-family='Arial' font-size='50' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>CM</text></svg>">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" style="text-decoration:none;">
+            <h1><span style="color: #fff;">Cine</span><span style="color: #e50914;">Max</span></h1>
+        </a>
+        <div class="header-right">
+            <div class="search-wrapper">
+                <input type="text" id="globalSearch" placeholder="Căutare...">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <a href="about.html">Despre</a> | 
+            <a href="contact.html">Contact</a> | 
+            <a href="login.html">Login</a> | <a href="register.html">Signup</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-content">
+            <h2>Despre CineMax</h2>
+            
+            <p>Suntem platforma ideală pentru pasionații de filme și seriale. La CineMax credem cu desăvârșire în puterea artei cinematografice de a schimba opinii, de a naște emoții noi și de a oferi o portiță superbă de evadare dintr-o rutină cotidiană repetitivă. </p>
+
+            <h3>Misiunea Noastră</h3>
+            <p>Scopul nostru a fost din prima clipă simplificarea modalității prin care cinefilii accesează detalii, rating-uri oficiale și interacțiuni reale asupra titlurilor care acaparează ecranele. De la vizionarea trailere-lor / embed-urilor oficiale și până la lăsarea unei recenzii oneste, la CineMax beneficiezi de un mediu extrem de rapid, sigur și imersiv cu un design Dark Mode integrat ce protejează vederea, ideal pentru navigarea nocturnă.</p>
+            
+            <h3>De ce să alegi CineMax?</h3>
+            <ul>
+                <li><strong>Design Responsive Modern:</strong> Funcționează uimitor și rapid indiferent că ești pe un PC, Tabletă sau Mobil.</li>
+                <li><strong>Ghid de Filme dinamic:</strong> Te menținem la curent cu cele mai importante titluri de la lansările blockbustere la drame clasice sau universuri extinse precum universul Marvel sau Star Wars.</li>
+                <li><strong>Filtrări Avansate:</strong> Sistem de indexare încorporat pentru găsirea instantă a filmelor sortate pe ani, note, sau cuvânt cheie.</li>
+                <li><strong>Secțiuni Deschise de Recenzii:</strong> Platformă sigură unde părerea contează pentru a decide calitatea finală a unui act regizoral.</li>
+            </ul>
+
+            <p>Rămâneți conectați cu noi, vom aduce curând mult mai multe funcții revoluționare pentru profilurile de conturi private CineMax Premium. Vă mulțumim că faceți parte din comunitatea noastră imensă!</p>
+
+            <div style="margin-top:40px; text-align:center;">
+                <a href="index.html" class="btn">Înapoi pe Acasă</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 CineMax Portal. Toate drepturile rezervate.</p>
+        <p>Proiect educațional demonstrativ.</p>
+        <div class="footer-links">
+            <a href="about.html">Despre</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('globalSearch')?.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                window.location.href = 'index.html?search=' + encodeURIComponent(this.value);
+            }
+        });
+    </script>
+</body>
+
+</html>
