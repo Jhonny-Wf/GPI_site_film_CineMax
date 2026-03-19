@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii Film</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Esential pe telefon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23e50914'/><text x='50%' y='50%' font-family='Arial' font-size='50' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>CM</text></svg>">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" style="text-decoration:none;">
+            <h1><span style="color: #fff;">Cine</span><span style="color: #e50914;">Max</span></h1>
+        </a>
+        <div class="header-right">
+            <div class="search-wrapper">
+                <input type="text" id="globalSearch" placeholder="Căutare...">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <a href="about.html">Despre</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="login.html">Login</a> | <a href="register.html">Signup</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- SECTIUNE DETALII FILM LATERALE -->
+        <div class="movie-details-top">
+            <img id="film-poster" src="filme/gladiator2.jpg" alt="Gladiator II">
+
+            <div class="movie-info-right">
+                <span id="film-gen" class="tag-gen">Acțiune</span>
+                <span id="film-rating" style="color:#ffcc00; font-weight:bold; font-size:12px; margin-left:10px;">★ 4.8
+                    / 10</span>
+                <h2 id="film-titlu">Gladiator II</h2>
+                <p id="film-descriere">Povestea lui Lucius în arena Romei.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 0;">Vizionează filmul:</h3>
+        <div class="movie-player" id="player-container">
+            <iframe id="film-player" src="" title="Movie Player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h3>Recenzii Utilizatori</h3>
+        <div id="reviews-container">
+            <!-- Review-urile vor fi introduse automat de JS aici -->
+        </div>
+
+        <div class="auth-notice">
+            Trebuie să fii <a href="login.html">autentificat</a> pentru a lăsa o recenzie.
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 CineMax Portal. Toate drepturile rezervate.</p>
+        <p>Proiect educațional demonstrativ.</p>
+        <div class="footer-links">
+            <a href="about.html">Despre</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </div>
+    </footer>
+
+    <script>
+        // O "bază de date" mică în memorie. 
+        // AICI vei pune link-urile tale de IFRAME pentru FIECARE FILM (la parametrul `iframe: "..."`)
+        const filmeDatabase = {
+            1: {
+                titlu: "Gladiator II", gen: "Acțiune", imagine: "filme/gladiator2.jpg", rating: "9.4",
+                iframe: "https://manager.veziseriale.app/player.php?id=187273",
+                descriere: "Acțiunea se petrece la peste un deceniu după fenomenele remarcabile avute în prima parte a lungmetrajului epic din anii 2000. Regizorul legendar Ridley Scott se întoarce la viața violentă a arenelor Romei, concentrându-se pe drama personajului Lucius. Copilăria sa liniștită a fost zdruncinată după invazia armatei romane asupra familiei sale. Aruncat în sângerosul Colosseum în loc să urce, prin drept, la tronul lumii ca împărat, eroul trebuie acum să își regăsească motivația și să clădească propria onoare din pofida sângelui vărsat gratuit de elitele corupte. Cadre fantastice și coregrafie grandioasă.",
+                recenzii: [
+                    { user: "ion", nota: "9.6", text: "Film de nota 10, efecte blana!", data: "2026-01-23" },
+                    { user: "butko", nota: "9", text: "Un adevarat spectacol. Recomand", data: "2026-01-20" },
+                    { user: "critic101", nota: "10", text: "Unul din filmele mele preferate din totdeauna!", data: "2026-03-02" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" }
+                ]
+            },
+            2: {
+                titlu: "Oppenheimer", gen: "Dramă", imagine: "filme/openhimer.jpg", rating: "9.2",
+                iframe: "https://manager.veziseriale.app/player.php?id=167579",
+                descriere: "Christopher Nolan aduce pe ecrane unul dintre cele mai răsunătoare producții din istorie, documentând biografia sfâșietoare a părintelui primei bombe atomice, J. Robert Oppenheimer. Pe parcursul a numeroși ani tumultuoși, îl urmărim din anii plini de speranță academică, până în timpul războiului pentru supraviețuire globală care a provocat direct înființarea Proiectului Manhattan la Los Alamos. Deciziile și remușcările etice interioare sunt îmbrăcate într-un asalt sonor uimitor, o cinematografie grandioasă și prestații actoricești impecabile. Oppenheimer a devenit distrugătorul lumilor.",
+                recenzii: [
+                    { user: "cinefil", nota: "10", text: "O capodoperă!", data: "2024-05-12" },
+                    { user: "alex", nota: "8", text: "Foarte lung dar interesant.", data: "2024-06-01" },
+                    { user: "ioana88", nota: "10", text: "L-am vazut de 3 ori si nu m-am plictisit absolut deloc.", data: "2026-03-15" },
+                    { user: "lucian", nota: "8.4", text: "Merita atentia, sunet excelent si poveste interesanta.", data: "2025-10-10" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" }
+                ]
+            },
+            3: {
+                titlu: "Dune: Part Two", gen: "SF", imagine: "filme/dune2.jpg", rating: "9.3",
+                iframe: "https://manager.veziseriale.app/player.php?id=178815",
+                descriere: "Sequel-ul vizionar al lui Denis Villeneuve readuce publicul direct în inima neiertătoare a deșertului Arrakis. O nouă aventură ce prezintă maturizarea completă a lui Paul Atreides în Lisan al-Gaib. Se bazează acum pe legături esențiale cu poporul fremenilor și de iubirea lui crescândă pentru Chani. Acțiunea este grandioasă și necruțătoare, cu lupte strategice împotriva trupelor tiranului Baron Harkonnen, viziuni apocaliptice legate de profeții divine și viermi uriași de nisip ce au acaparat cinematografia științifico-fantastică. Ritmul perfect aduce a doua parte din DUNE direct în rândul clasicelor absolute.",
+                recenzii: [
+                    { user: "sf_fan", nota: "10", text: "Mai bun decat primul!", data: "2025-02-11" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" },
+                    { user: "mihai_t", nota: "8", text: "Bunicel, desi primele minute sunt un pic cam lente.", data: "2025-12-29" }
+                ]
+            },
+            4: {
+                titlu: "Barbie", gen: "Comedie", imagine: "filme/barbie.jpg", rating: "9.1",
+                iframe: "https://manager.veziseriale.app/player.php?id=167578",
+                descriere: "Filmul colorat lansat pentru păpușa clasică Mattel are la bază un fir epic extrem de satiric și de surprinzător. Urmărește viața perfectă, idilică și extrem de roz a mai multor Barbie și Ken în 'Barbieland', până în momentul cheie în care barbie-ul stereotip dezvoltă gânduri neașteptate despre existențialism. Forțată să călătorească abisul dintre universul ei fictiv și cel real (Real World), povestea capătă momente comice memorabile care se izbesc de realitatea condiției sociale și umane. Margot Robbie și Ryan Gosling dau o formă hilară personajelor din carton.",
+                recenzii: [
+                    { user: "maria", nota: "8", text: "Amuzant si relaxant.", data: "2024-11-12" },
+                    { user: "lucian", nota: "8.4", text: "Merita atentia, sunet excelent si poveste interesanta.", data: "2025-10-10" },
+                    { user: "critic101", nota: "10", text: "Unul din filmele mele preferate din totdeauna!", data: "2026-03-02" },
+                    { user: "ioana88", nota: "10", text: "L-am vazut de 3 ori si nu m-am plictisit absolut deloc.", data: "2026-03-15" }
+                ]
+            },
+            5: {
+                titlu: "Interstellar", gen: "SF", imagine: "filme/Interstellar_film_poster.jpg", rating: "9.7",
+                iframe: "https://manager.veziseriale.app/player.php?id=95532",
+                descriere: "O misiune cosmică lansată dintr-o perioadă sumbră a umanității, în care Pământul a devenit infertil și recoltele mor rând pe rând. O mână de oameni de știință descoperă misterios o gaură de vierme ce promite accesul spre lumi noi, iar Cooper - fost pilot de elită devenit fermier - părăsește pentru mereu propria fiică pentru a asigura continuitatea speciei. O emoție copleșitoare ghidată direct de geniul sonor al lui Hans Zimmer. Pelicula joacă extraordinar cu conceptul de relativitate temporară, gravitație și găuri negre.",
+                recenzii: [{ user: "spatiu", nota: "10", text: "Muzica e fenomenala.", data: "2023-01-15" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" }
+                ]
+            },
+            6: {
+                titlu: "Inception", gen: "Thriller", imagine: "filme/inception.jpg", rating: "9.2", iframe: "https://manager.veziseriale.app/player.php?id=96270",
+                descriere: "Dom Cobb nu este un hoț standard, ci unul desăvârșit, specializat în extracția de secrete strategice profunde din însăși structura visurilor în timpul etapei de somn profund. Oferindu-i-se șansa inedită de a face exact inversul - și anume a planta un gând în subconștient printr-o tehnică riscantă denumită 'inception' - misiunea se poate dovedi absolut mortală. Nivelurile profunde din universul oniric ridică mereu surprize dramatice, lăsând constant în aer misterul realității.",
+                recenzii: [{ user: "nolan_fan", nota: "10", text: "M-a bagat in ceata dar genial.", data: "2021-10-10" },
+                    { user: "andrei_b", nota: "9", text: "O performanta extraordinara, mult peste medie.", data: "2026-02-11" },
+                    { user: "alin_m", nota: "9.8", text: "N-am mai vazut asa ceva, o capodopera curata.", data: "2026-03-05" },
+                    { user: "mihai_t", nota: "8", text: "Bunicel, desi primele minute sunt un pic cam lente.", data: "2025-12-29" }
+                ]
+            },
+            7: {
+                titlu: "The Matrix", gen: "SF", imagine: "filme/The Matrix.jpg", rating: "8.9", iframe: "https://manager.veziseriale.app/player.php?id=128785",
+                descriere: "Renumitul hacker ciberspațial Thomas Anderson (cunoscut drept Neo) simte prin intuiție că percepția normală este alterată. Atunci când ia marea decizie și apucă Pilula Roșie trimisă de rebelul Morpheus, umanitatea se trezește ca fiind aservită chimic unor super-calculatoare nemiloase care hrănesc specia umană cu simularea imersivă programată din Matrix. Filmul excelează la toate nivelurile de ideologie filosofică și aduce pe piață noi limite regizorale specifice, precum 'bullet-time'-ul.",
+                recenzii: [{ user: "neo-123", nota: "9", text: "Clasic absolut.", data: "2022-09-09" },
+                    { user: "mihai_t", nota: "8", text: "Bunicel, desi primele minute sunt un pic cam lente.", data: "2025-12-29" },
+                    { user: "andrei_b", nota: "9", text: "O performanta extraordinara, mult peste medie.", data: "2026-02-11" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" }
+                ]
+            },
+            8: {
+                titlu: "Gladiator I", gen: "Acțiune", imagine: "filme/Gladiator I.webp", rating: "9.3", iframe: "https://manager.veziseriale.app/player.php?id=96281",
+                descriere: "Eroica dramă romană urmărește ascensiunea fabuloasă a Generalului spaniol sfidat Maximus Decimus Meridius. Fiind mințit cu cruzime și lăsat aproape mort, alături de asasinarea groaznică a restului familiei sale de către fiul nelegiuit Commodus, el ajunge sclavia. Astfel renăscut, capătă experiență vitală în arenă ca un gladiator iscusit capabil de absolut orice, mânat de o singură dorință vie: răzbunarea absolută cu orice preț personal. O poveste pură despre bărbăție.",
+                recenzii: [{ user: "roma", nota: "10", text: "Are you not entertained?!", data: "2020-03-04" },
+                    { user: "alin_m", nota: "9.8", text: "N-am mai vazut asa ceva, o capodopera curata.", data: "2026-03-05" },
+                    { user: "andrei_b", nota: "9", text: "O performanta extraordinara, mult peste medie.", data: "2026-02-11" },
+                    { user: "lucian", nota: "8.4", text: "Merita atentia, sunet excelent si poveste interesanta.", data: "2025-10-10" }
+                ]
+            },
+            9: {
+                titlu: "John Wick 4", gen: "Acțiune", imagine: "filme/John Wick 4.jpg", rating: "9.4", iframe: "https://manager.veziseriale.app/player.php?id=158354",
+                descriere: "În acest capitol exploziv, John Wick descoperă singura cale posibilă prin care va putea să învingă 'Masa Superioară' corporativă, însă o pune pe hold ca să poată obține mult anticipata eliberare. În joc se pun acum prilejuri absolut grandioase derulate peste tot globul în orașe precum Paris, Osaka și Berlin, asasinările nefiind niciodată mai complexe. Coregrafiile cu nunchucks masive, lupte de pe scări la Paris sunt efectiv printre cele mai grandioase execuții vizuale apărute în istorie.",
+                recenzii: [{ user: "gun-fu", nota: "8", text: "Actiune blana, story slabut.", data: "2025-05-19" },
+                    { user: "ioana88", nota: "10", text: "L-am vazut de 3 ori si nu m-am plictisit absolut deloc.", data: "2026-03-15" },
+                    { user: "alin_m", nota: "9.8", text: "N-am mai vazut asa ceva, o capodopera curata.", data: "2026-03-05" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" }
+                ]
+            },
+            10: {
+                titlu: "Spider-Man", gen: "Aventură", imagine: "filme/Spider-Man.jpg", rating: "9.4", iframe: "https://manager.veziseriale.app/player.php?id=128696",
+                descriere: "Un studiu despre nașterea eroului tău favoribil de peste râu ce a acaparat cultura internațională. Mușcătura neplăcută din laboratoarelor Oscorp este doar startul unor responsabilități uriașe pe care Peter Parker le învață treptat de la unchiul său decedat recent, Ben. Cursa contra impunătorului antagonist ce terorizează punțile din oraș testează profund capacitatea super-umană dobândită proaspăt din accidentul radioactiv.",
+                recenzii: [{ user: "web", nota: "9", text: "Foarte tare varianta asta.", data: "2021-12-25" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" },
+                    { user: "critic101", nota: "10", text: "Unul din filmele mele preferate din totdeauna!", data: "2026-03-02" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" }
+                ]
+            },
+            11: {
+                titlu: "The Dark Knight", gen: "Acțiune", imagine: "filme/The Dark Knight.jpg", rating: "9.3", iframe: "https://manager.veziseriale.app/player.php?id=75121",
+                descriere: "Cu ajutorul constant obținut din partea locotenentului Jim Gordon, Batman reușește controlarea unei proporții destul de stabile a infracționalității nocturne majore provocate în Gotham. Totuși, dinamica scade dramatic proporțiile binarului când un personaj halucinant - Jokerul - alege ca unică misiune distrugerea anarhică și punerea eroului sub decizii letale groaznice. Haosul ridică ideologii morale și distruge ireversibil un spirit neînfricat.",
+                recenzii: [{ user: "batman-ro", nota: "10", text: "Heath Ledger a fost ceva de nedescris.", data: "2019-07-20" },
+                    { user: "lucian", nota: "8.4", text: "Merita atentia, sunet excelent si poveste interesanta.", data: "2025-10-10" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" }
+                ]
+            },
+            12: {
+                titlu: "Deadpool", gen: "Comedie", imagine: "filme/Deadpool_(2016_poster).png", rating: "9.4", iframe: "https://manager.veziseriale.app/player.php?id=83375",
+                descriere: "Wade Wilson primește cea mai tristă vizită din lume atunci când află detalii despre diagnosticul târziu de cancer incurabil aflat pe seama lui. Acceptând tratamente dubioase neortodoxe de transformare fizică mutantică pentru a stopa suferința bolii interne ascunse, dobândește regenerarea instantanee – devenind Deadpool. Sarcina sa primară este acum masacrarea întregului cult implicat, totul printre glume extrem de ironice ce distrug fără emoție așa-numitul 'faimos al patrulea perete'.",
+                recenzii: [{ user: "marvel", nota: "9", text: "Super funny as usual.", data: "2025-08-01" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" },
+                    { user: "ioana88", nota: "10", text: "L-am vazut de 3 ori si nu m-am plictisit absolut deloc.", data: "2026-03-15" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" }
+                ]
+            },
+            13: {
+                titlu: "Avengers", gen: "SF", imagine: "filme/Avengers.jpg", rating: "9.8", iframe: "https://manager.veziseriale.app/player.php?id=97870",
+                descriere: "Universul Cinematografic al minunilor a dat naștere unui crossover mamut regizat spectaculos pentru a contracara o amenințare la adresa Planetei de proporții astronomice asigurate de maleficului frate Loki și formidabila armată invadatoare cosmică formată din creaturile Chitauri. Se apelează la divizia extrem de secretă S.H.I.E.L.D, coordonator ce pune bazele legendarei inițiative ce reunește eroi emblematici pentru o singură misiune uriașă de respingere interdimensională.",
+                recenzii: [{ user: "tony_s", nota: "10", text: "Ne vedem in Endgame.", data: "2022-04-26" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" },
+                    { user: "critic101", nota: "10", text: "Unul din filmele mele preferate din totdeauna!", data: "2026-03-02" }
+                ]
+            },
+            14: {
+                titlu: "Joker", gen: "Dramă", imagine: "filme/Joker.jpg", rating: "9.6", iframe: "https://manager.veziseriale.app/player.php?id=59717",
+                descriere: "Studiul intim cu nuanțe reci adresat psihopatului Arthur Fleck. Prins izolat în marginea prăfuitelor blocuri ale colțului sărăcăcios specific orașului Gotham, aspiră inițial spre carierele luminoase de stand-up comediant dorite și influențate de talk-show-uri transmise de media dominantă. După prea multe batjocuri violente susținute pe plan exterior cât și prin instabilitatea sa medicală evidentă provocată de un comportament nealterat, omul intră de bună voie sau ireproșabil în zona cruntei nebunii.",
+                recenzii: [{ user: "arthur", nota: "10", text: "Joaquin Phoenix joaca absolut bestial.", data: "2020-01-01" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" },
+                    { user: "andrei_b", nota: "9", text: "O performanta extraordinara, mult peste medie.", data: "2026-02-11" },
+                    { user: "alin_m", nota: "9.8", text: "N-am mai vazut asa ceva, o capodopera curata.", data: "2026-03-05" }
+                ]
+            },
+            15: {
+                titlu: "The Godfather", gen: "Dramă", imagine: "filme/The Godfather.jpg", rating: "9.8", iframe: "https://manager.veziseriale.app/player.php?id=97442",
+                descriere: "Probabil una dintre cele apreciabile cronici cu referire directă din cercurile crimei organizate mafiote italo-americane din vremurile din urma deceniului al patru. Regizată complet impecabil, drama captează conflictul colosal desfășurat sub domnia temutului patriarh Don Vito Corleone într-un război stradal absolut devastator pornit de noile generații și preluările cu silă a legendarului tron administrativ mafiot aduse complet ca blestem asupra singurului de viță ce inițial nu voia astfel de atribuții.",
+                recenzii: [{ user: "corleone", nota: "10", text: "Piatra de temelie a cinematografiei.", data: "2024-03-15" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" },
+                    { user: "ioana88", nota: "10", text: "L-am vazut de 3 ori si nu m-am plictisit absolut deloc.", data: "2026-03-15" }
+                ]
+            },
+            16: {
+                titlu: "Fight Club", gen: "Thriller", imagine: "filme/Fight Club.jpg", rating: "9.2", iframe: "https://manager.veziseriale.app/player.php?id=118109",
+                descriere: "Prima și poate unica regulă menționată pe tot parcursul filmului al fenomenalului Fight Club impune membrului interzicerea absolută adresată comentării publice sau transmiterii secretului. Urmărind viața de corporație apusă de pe un personaj extrem de somnambulic izolat de materialisme, Tyler reprezintă calea unei regăsiri primordiale absolut instinctivă și extrem de brutală ce transformă clubul de box subteran creat clandestin într-un sindicat global anarhist imaculat și total impredictibil.",
+                recenzii: [{ user: "tyler", nota: "10", text: "M-a lasat cu gura cascata plot twist-ul.", data: "2021-11-09" },
+                    { user: "mihai_t", nota: "8", text: "Bunicel, desi primele minute sunt un pic cam lente.", data: "2025-12-29" },
+                    { user: "critic101", nota: "10", text: "Unul din filmele mele preferate din totdeauna!", data: "2026-03-02" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" }
+                ]
+            },
+            17: {
+                titlu: "Pulp Fiction", gen: "Dramă", imagine: "filme/Pulp Fiction.jpg", rating: "9.3", iframe: "https://manager.veziseriale.app/player.php?id=75122",
+                descriere: "O creație atipică formidabilă a regizorului Quentin Tarantino, complet non-liniară. Urmărește intersecțiile grozave create de doi asasin de rând extrem de inteligenți având misiuni dubioase și complicate trasate din dorințele brutale impuse de imprevizibilul interlop, o nevastă care trage cu tot dinadinsul pentru afaceri distractive și un recuperator pugilist determinat să înfrunte mafia deșănțată ca final. Scenele comice domină printre elementele violente extreme și un dialog demențial și total spontan de referință internațională.",
+                recenzii: [{ user: "tarantino", nota: "9", text: "Dialoguri extraordinare.", data: "2023-08-08" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" },
+                    { user: "andrei_b", nota: "9", text: "O performanta extraordinara, mult peste medie.", data: "2026-02-11" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" }
+                ]
+            },
+            18: {
+                titlu: "Forrest Gump", gen: "Dramă", imagine: "filme/Forrest Gump.jpg", rating: "9.8", iframe: "https://manager.veziseriale.app/player.php?id=132112",
+                descriere: "O poveste incredibil de minunată privită integral din ochiul complet nevinovat prezent destul cu limitările impuse ale mentalului său, om pe nume Gump ce prezidează toate evenimentele mari istorice extrem de iconice de referință în America dintre ultimele deceniile aduse printre decenii. Participare în Vietnam, atletism, inventator al fenomenului 'mergi pentru a fugi' până într-un mic scaun primit, dorința arzătoare spre care a rămas credincios toata existența continuă pe dragostea pe care i-a purtat-o colegei iubite. ",
+                recenzii: [{ user: "run-forrest", nota: "10", text: "Am plans... mult.", data: "2024-02-14" },
+                    { user: "dan_p", nota: "9.6", text: "Fara dubiu un spectacol vizual senzational.", data: "2026-01-14" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" },
+                    { user: "alin_m", nota: "9.8", text: "N-am mai vazut asa ceva, o capodopera curata.", data: "2026-03-05" }
+                ]
+            },
+            19: {
+                titlu: "Lord of the Rings", gen: "Fantasy", imagine: "filme/Lord of the Rings.jpg", rating: "9.4", iframe: "https://manager.veziseriale.app/player.php?id=97866",
+                descriere: "Întregul tărâm pașnic medieval ce înconjoară miticul Pământ de Mijloc este absolut scufundat ca prin minune între o presiune a întunericului malefic. O companie neplănuit dar binecuvântat formată total din rase diverse alcătuiește așa numita formidabilă Frăție a inelului, preluând enorma misiune imposibil de îndeplinit la simplul cuvânt rostit al destinului extrem de riscant în muntele destinului a lui Sauron spre a reduce faimosul și neprețuitul Inel Unic și de opri formele crude de oprimare totală a ființelor.",
+                recenzii: [{ user: "frodo", nota: "10", text: "Epic journey.", data: "2025-12-01" },
+                    { user: "vlad_c", nota: "9.4", text: "Atmosfera e incredibila si actorii sunt geniali.", data: "2026-02-20" },
+                    { user: "lucian", nota: "8.4", text: "Merita atentia, sunet excelent si poveste interesanta.", data: "2025-10-10" },
+                    { user: "bogdan", nota: "10", text: "Perfect. 10/10", data: "2026-01-09" }
+                ]
+            },
+            20: {
+                titlu: "Star Wars", gen: "SF", imagine: "filme/Star Wars A New Hope.jpg", rating: "8.8", iframe: "https://manager.veziseriale.app/player.php?id=97386",
+                descriere: "Opera centrală științifico-fantastică ce continuă istoria unui fermier galactic limitat care aspiră pe suprafața planetelor desertice din univers îndelung pe o expediție pe deplin remarcabilă alături armele misterelor aduse ale cavaleriilor legendelor uitate în Forță pe partea luminii care poartă și promit să desfacă masivul jug oprit dur peste imperiul distrugător, distrugând colosala Stea A Morții. Alături de figuri formidabile ca generalii sau traficanții galactici el oprește imperiul Galactic absolut despotic format definitiv de cavalerii malefice.",
+                recenzii: [{ user: "jedi", nota: "10", text: "May the force be with you.", data: "2022-05-04" },
+                    { user: "lucian", nota: "8.4", text: "Merita atentia, sunet excelent si poveste interesanta.", data: "2025-10-10" },
+                    { user: "oana_s", nota: "9", text: "Recomand sa il vedeti, emotiile transmise sunt super.", data: "2025-11-20" },
+                    { user: "mihai_t", nota: "8", text: "Bunicel, desi primele minute sunt un pic cam lente.", data: "2025-12-29" }
+                ]
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const filmId = params.get('id');
+
+        if (filmId && filmeDatabase[filmId]) {
+            const dateFilm = filmeDatabase[filmId];
+
+            // Suprascriem HTML-ul intern nativ cu datele acestui film specific 
+            document.title = "Detalii Film - " + dateFilm.titlu;
+            document.getElementById('film-poster').src = dateFilm.imagine;
+            document.getElementById('film-titlu').innerText = dateFilm.titlu;
+            document.getElementById('film-gen').innerText = dateFilm.gen;
+            document.getElementById('film-rating').innerText = "★ " + dateFilm.rating + " / 10";
+            document.getElementById('film-descriere').innerText = dateFilm.descriere;
+
+            // IFRAME Dinamic
+            const playerIframe = document.getElementById('film-player');
+            const playerDiv = document.getElementById('player-container');
+            if (dateFilm.iframe && dateFilm.iframe !== "") {
+                playerIframe.src = dateFilm.iframe;
+                playerDiv.style.display = "block";
+            } else {
+                playerDiv.style.display = "none";
+                // sau poți lăsa iframe.src = "" ca să arate negru
+            }
+
+            // RECENZII Dinamice si RECALCULAREA MEDIEI
+            let customReviews = JSON.parse(localStorage.getItem('cinemax_custom_reviews') || "{}");
+            let recenziiTotale = dateFilm.recenzii || [];
+            
+            if (customReviews[filmId]) {
+                // Adaugam recenziile noi in capul listei
+                recenziiTotale = customReviews[filmId].concat(recenziiTotale);
+                
+                // Recalculam fizic pe moment media adevarata combinata si schimbam badge-ul mare!
+                let curSum = 0;
+                recenziiTotale.forEach(r => curSum += parseFloat(r.nota));
+                let curAvg = (curSum / recenziiTotale.length).toFixed(1);
+                if (curAvg.endsWith('.0')) curAvg = parseInt(curAvg).toString();
+                document.getElementById('film-rating').innerText = "★ " + curAvg + " / 10";
+            }
+
+            const reviewsContainer = document.getElementById('reviews-container');
+            if (recenziiTotale.length > 0) {
+                let recHtml = '';
+                recenziiTotale.forEach(r => {
+                    recHtml += `
+                    <div class="review-card">
+                        <div class="rev-header"><span style="color: #ffffff;">${r.user}</span> - <span style="color: #e50914;">★ ${r.nota}/10</span></div>
+                        <div class="rev-text">${r.text}</div>
+                        <div class="rev-date">${r.data}</div>
+                    </div>`;
+                });
+                reviewsContainer.innerHTML = recHtml;
+            } else {
+                reviewsContainer.innerHTML = '<p style="color:#aaa;">Nu există recenzii pentru acest film încă.</p>';
+            }
+
+        }
+
+        // Căutare din antet
+        document.getElementById('globalSearch')?.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                window.location.href = 'index.html?search=' + encodeURIComponent(this.value);
+            }
+        });
+    </script>
+    <script src="auth.js"></script>
+</body>
+
+</html>
